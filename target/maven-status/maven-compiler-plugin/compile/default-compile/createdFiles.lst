@@ -1,0 +1,6 @@
+com/adflex/fecredit/entity/LoanApplication$LoanApplicationBuilder.class
+com/adflex/fecredit/controller/WebhookController.class
+com/adflex/fecredit/FeCreditBackendApplication.class
+com/adflex/fecredit/entity/LoanApplication.class
+com/adflex/fecredit/repository/LoanRepository.class
+com/adflex/fecredit/service/LoanService.class
