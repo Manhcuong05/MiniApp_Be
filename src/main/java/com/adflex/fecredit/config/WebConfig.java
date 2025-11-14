@@ -12,11 +12,9 @@ public class WebConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedOrigins(
-                                "https://fecredit.pages.dev",  // Tí thay URL thật
-                                "http://localhost:5173"
-                        )
+                        .allowedOriginPatterns("*")   // QUAN TRỌNG
                         .allowedMethods("*")
+                        .allowedHeaders("*")
                         .allowCredentials(false);
             }
         };
