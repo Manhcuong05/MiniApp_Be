@@ -14,12 +14,18 @@ public class LoanService {
     private LoanRepository loanRepository;
 
     public LoanApplication saveLoan(LoanApplication loan) {
-        // 1️⃣ Lưu dữ liệu vào PostgreSQL
+
+        // 🌟 Đảm bảo createdAt luôn có giá trị
+        if (loan.getCreatedAt() == null) {
+            loan.setCreatedAt(java.time.LocalDateTime.now());
+        }
+
+        // 1️⃣ Lưu vào PostgreSQL
         LoanApplication saved = loanRepository.save(loan);
 
-        // 2️⃣ Gửi dữ liệu đã lưu sang webhook bên ngoài
+        // 2️⃣ Gửi webhook (tùy chọn)
         try {
-            String webhookUrl = "https://webhook.site/4d05190e-cacb-41b2-93c0-fa50d80a5bb8"; // 🔁 Thay bằng link thật (Hookdeck, Zapier, Webhook.site,...)
+            String webhookUrl = "https://webhook.site/4d05190e-cacb-41b2-93c0-fa50d80a5bb8";
             RestTemplate restTemplate = new RestTemplate();
 
             HttpHeaders headers = new HttpHeaders();
@@ -29,11 +35,11 @@ public class LoanService {
             restTemplate.postForEntity(webhookUrl, request, String.class);
 
             System.out.println("✅ Webhook sent successfully to: " + webhookUrl);
+
         } catch (Exception e) {
             System.err.println("⚠️ Webhook send failed: " + e.getMessage());
         }
 
-        // 3️⃣ Trả về object đã lưu
         return saved;
     }
 }
