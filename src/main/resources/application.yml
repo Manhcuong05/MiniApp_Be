@@ -3,11 +3,12 @@ server:
 
 spring:
   datasource:
-    url: jdbc:postgresql://dpg-d4bkfgpr0fns73fgurp0-a:5432/fecredit_db
+    url: jdbc:postgresql://dpg-d553t6mr433s73dceui0-a:5432/postgresql_hw3h
     username: fecredit_db_user
-    password: kpM4rmW2SVpWd5LDKwSZFytxZco0JBfG
+    password: nJS8CJpOW410BOyAQ6EHv3YCZF4qqQWj
 
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
+
